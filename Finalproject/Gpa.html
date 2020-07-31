@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>GPA </title>
+     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" href="AUM_Logo.png">
+    <link rel="stylesheet" href="gpa_main.css"> 
+    
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+    
+<body >
+ <div class="headingimage">
+<img src="GPA.jpg" style=" width: 1500px;">
+</div>
+<div class="navbar">
+ <a href="index.hp.html">Home</a>
+  <a class="active" href="Gpa.html"> GPA</a>
+    <a href="Computerscience.html">  Computer Science</a>
+    <a href="TeachingAssistant.html">Teaching Assistant</a>
+  <div class="topnav">
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div> 
+</div> 
+
+        <div>
+      <div class="column" >
+         
+
+
+          <div class="box"><a class="removeheader" href="Academic Programs">Academic Programs </a> </div>
+        <br>
+          <div class="box"><a class="removeheader" href="Student Resources">Student Resources</a></div>
+        <br>
+          <div class="box"><a class="removeheader" href="Academic Departments">Academic Departments</a></div>
+        <br>
+          <div class="box"><a class="removeheader" href="Community Resources">Community Resources</a></div>
+          <br>
+          <div class="box"><a class="removeheader" href="About">About</a></div>
+          <br>
+          <div class="box"><a class="removeheader" href="Auburn Montgomery">Auburn Montgomery</a></div>
+   
+         
+        </div>
+            
+<div class="columnright">
+    <br><br>
+<center>
+    <font style="color:orange">  <h1> GPA Calculator</h1> </font>
+<form Name="gpacalcform">
+<table border=5 bgcolor=white cellpadding="5" 
+cellspacing="2">
+<th></th>
+<th>Grade</th>
+<th>Credits</th>
+<tr>
+<td>Class 1</td>
+<td><input type="text" size=5 name="gr1" align=top
+maxlenght=5> </td>
+<td><input type=text size=5 name="cr1" align=top 
+maxlength=5> </td>
+</tr>
+<tr>
+<td>Class 2</td>
+<td><input type=text size=5 name="gr2" align=top 
+maxlength=5></td>
+<td><input type=text size=5 name="cr2" align=top 
+maxlength=5></td>
+</tr>
+
+<input type="hidden" size=5 name="gr3" align=top 
+maxlength=5><input type=hidden size=5 name="cr3" align=top 
+maxlength=5>
+<tr align=center>
+<td colspan=3><input type="button" value="calculate" 
+name="calcbutton"
+onclick="gpacalc()"></td>
+</tr>
+</table>
+</form>
+</center>
+</div>
+
+
+<script language="javascript">
+
+function gpacalc()
+{
+//define valid grades and their values
+var gr = new Array(9); 
+var cr = new Array(9);
+var ingr = new Array(5);
+var incr = new Array(5);
+
+var grcount = 11; 
+gr[1] = "A"; 
+cr[1] = 4; 
+gr[4] = "B";
+cr[4] = 3;
+gr[7] = "C";
+cr[7] = 2;
+gr[9] = "D";
+cr[9] = 1;
+gr[10] = "F";
+cr[10] = 0;
+// retrieve user input
+ingr[0] = document.gpacalcform.gr1.value;
+ingr[1] = document.gpacalcform.gr2.value;
+ingr[2] = document.gpacalcform.gr3.value;
+incr[0] = document.gpacalcform.cr1.value;
+incr[1] = document.gpacalcform.cr2.value;
+incr[2] = document.gpacalcform.cr3.value;
+
+
+// Calculate GPA
+var allgr =0;
+var allcr = 0;
+var gpa = 0;
+for (var x = 0; x < 5 + 3; x++)
+        {
+        if (ingr[x] == "") break;
+//      if (isNaN(parseInt(incr[x]))) alert("Error- You did not enter a numeric  credits value for Class If the class is worth 0 credits then enter the number 0 in  the field."); 
+        var validgrcheck = 0;
+        for (var xx = 0; xx < grcount; xx++)
+                {
+                if (ingr[x] == gr[xx])
+                        {
+                        allgr = allgr + (parseInt(incr[x],10) * cr[xx]);
+                        allcr = allcr + parseInt(incr[x],10);
+                        validgrcheck = 1;
+                        break;
+                        }
+                }
+        if (validgrcheck == 0)
+                {
+                alert("Error- Could not recognize the grade entered for Class " + eval(x +  1) + ".Only Capital Letter are allowed.");
+                return 0;
+                }
+        }
+
+// this if-check prevents a divide by zero error
+if (allcr == 0)
+        {
+        alert("Error- You did not enter any credit values! GPA = N/A");
+        return 0;
+        }
+
+gpa = allgr / allcr;
+
+alert("GPA =  " + eval(gpa));
+
+return 0;
+}
+    
+</script>
+       <a href="Events.html"><em>Check Out Events at AUM</em></a> <br><br>
+       <a href="Advisor.html"><em>Academic Advising Page</em></a>      
+             <br> <br><br>    <br> <br><br>
+ <footer>
+  <p>&copycopyright Auburn University At Montgomery<br> </p>
+  <a href="#" class="fa fa-facebook"></a>
+  <a href="#" class="fa fa-twitter"></a>
+  <a href="#" class="fa fa-instagram"></a>
+  <a href="#" class="fa fa-linkedin"></a><br>
+  <a href="admissions@aum.edu" style="color: white">admissions@aum.edu</a>
+  <address>7400 East Drive <br> Montgomery,AL 36117 <br> Local:334-244-3000 <br>
+  Toll-Free: 800-227-2649
+  </address>
+        </footer>
+    
+    </div>
+</body>
+</html>
